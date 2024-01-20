@@ -31,7 +31,11 @@ pub fn run(args: Args) -> Result<()> {
     for filename in args.files {
         match open(&filename) {
             Err(err) => eprintln!("Failed to open {filename}: {err}"),
-            Ok(_) => println!("Opened {filename}"),
+            Ok(file) => {
+                for line in file.lines() {
+                    println!("{}", line?);
+                }
+            }
         }
     }
     Ok(())

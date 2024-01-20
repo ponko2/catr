@@ -24,6 +24,8 @@ pub fn get_args() -> Result<Args> {
 }
 
 pub fn run(args: Args) -> Result<()> {
-    dbg!(args);
+    for filename in args.files {
+        println!("{filename}");
+    }
     Ok(())
 }
